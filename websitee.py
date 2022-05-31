@@ -12,11 +12,12 @@ import plotly
 from matplotlib import dates as mpl_dates
 from cProfile import label
 from distutils.cmd import Command
-from PIL import ImageTk, Image
 import datetime 
-  
+from streamlit.cli import main  
+from streamlit.proto.RootContainer_pb2 import RootContainer
+import pandas as pd 
 
-st.set_page_config(page_title="My Website", page_icon=":tada",layout="wide")
+st.set_page_config(page_title="My Website",layout="wide")
 
 
 st.subheader("Hi unsere Website")
@@ -248,27 +249,4 @@ while True:
             sleep(18)
             
             
-    plt.style.use('seaborn')
-
-df=pd.read_excel("test_4.xlsx")
-zug=df['Bahn']
-preise=df['Preis']
-datum=df['Datum']
-zbh=df['SBH']
-scan=df["Scan"]
-
-x=scan
-y1=preise
-
-
-plt.plot_date(scan,y1,linestyle ='solid')
-plt.gcf().autofmt_xdate()
-plt.tight_layout()
-
-plt.xlabel("Zugriff")
-plt.ylabel("Preise in €")
-plt.show()
-
-
-
  
